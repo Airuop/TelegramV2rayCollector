@@ -22,7 +22,12 @@ jobs:
           php collect.php
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
+          git pull origin dev
           git config credential.helper store
           git add -A
           git commit -m "🚀 Servers Updated - $(TZ='Asia/Tehran' date '+%Y-%m-%d %H:%M:%S')"
-          git push
+          
+      - name: Push Change
+        uses: ad-m/github-push-action@master
+        with:
+          branch: dev
